@@ -8,6 +8,7 @@ from .ast import *
 
 
 def parse(statement, root_exp = None):
+
   term = set(terminators)
 
   if root_exp is None:
@@ -167,6 +168,7 @@ def unary_exp(tokens):
   return value_exp(tokens)
 
 def value_exp(tokens):
+
   """
   Returns a function that will return a value for the given token
   """
@@ -203,6 +205,8 @@ def value_exp(tokens):
     return case_when_core_exp(tokens)
   elif token.lower() == 'cast':
     return cast_core_exp(tokens)
+  elif token[0] =='`' and token[-1] == '`':
+    return StringConst(token)
   #elif token in SYMBOLS: 
   #  return lambda row, ctx: token
   else:

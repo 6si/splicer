@@ -210,7 +210,7 @@ def test_parse_float():
 
 def test_reseved():
   ast = query_parser.parse('`reserved`')
-  assert_is_instance(ast, Var)
+  assert_is_instance(ast, StringConst)
 
 
 def test_parse_mul():
