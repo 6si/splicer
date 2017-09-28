@@ -534,7 +534,7 @@ def union_stmt(tokens):
 
   if not tokens:
     return op
-  elif tokens[0:2] == ["union", "all"]:
+  elif tokens[0].lower() == "union" and tokens[1].lower() == "all":
     tokens.pop(0)
     tokens.pop(0)
     return UnionAllOp(op, union_stmt(tokens))
